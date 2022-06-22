@@ -1,4 +1,4 @@
-package com.pablojuice.lsiapp.utils
+package com.pablojuice.lsiapp.core.utils
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

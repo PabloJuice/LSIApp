@@ -1,4 +1,4 @@
-package com.pablojuice.lsiapp.database.entity
+package com.pablojuice.lsiapp.data.model
 
 interface ConvertibleToUserItem {
     fun toUserItem(): UserItem

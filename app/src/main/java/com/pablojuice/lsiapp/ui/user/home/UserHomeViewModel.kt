@@ -2,9 +2,9 @@ package com.pablojuice.lsiapp.ui.user.home
 
 import androidx.lifecycle.MutableLiveData
 import com.pablojuice.lsiapp.core.ui.BaseViewModel
-import com.pablojuice.lsiapp.database.entity.ConvertibleToUserItem
-import com.pablojuice.lsiapp.database.entity.UserItem
-import com.pablojuice.lsiapp.networking.handlers.UserRequestHandler
+import com.pablojuice.lsiapp.data.model.ConvertibleToUserItem
+import com.pablojuice.lsiapp.data.model.UserItem
+import com.pablojuice.lsiapp.data.networking.handlers.UserRequestHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

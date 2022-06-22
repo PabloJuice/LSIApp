@@ -1,9 +1,9 @@
-package com.pablojuice.lsiapp.networking.response
+package com.pablojuice.lsiapp.data.networking.response
 
 import com.google.gson.annotations.SerializedName
-import com.pablojuice.lsiapp.database.entity.ConvertibleToUserItem
-import com.pablojuice.lsiapp.database.entity.GithubUserItem
-import com.pablojuice.lsiapp.database.entity.UserItem
+import com.pablojuice.lsiapp.data.model.ConvertibleToUserItem
+import com.pablojuice.lsiapp.data.model.GithubUserItem
+import com.pablojuice.lsiapp.data.model.UserItem
 
 class GitHubUserResponse : ArrayList<GitHubUser>()
 

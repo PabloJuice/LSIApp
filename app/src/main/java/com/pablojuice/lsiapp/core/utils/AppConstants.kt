@@ -1,4 +1,4 @@
-package com.pablojuice.lsiapp.utils
+package com.pablojuice.lsiapp.core.utils
 
 object AppConstants {
     const val DAILY_MOTION_API: String = "https://api.dailymotion.com"
