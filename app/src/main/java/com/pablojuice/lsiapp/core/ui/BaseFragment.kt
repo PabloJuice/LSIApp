@@ -33,7 +33,7 @@ abstract class BaseFragment<B : ViewBinding, VM : BaseViewModel> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = bindViewModel()
-        navController = findNavController(binding.root)
+        navController = findNavController(requireView())
     }
 
     fun navigateBack() {
