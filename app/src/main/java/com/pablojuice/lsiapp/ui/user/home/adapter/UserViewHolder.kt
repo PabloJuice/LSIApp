@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.pablojuice.lsiapp.database.entity.UserItem
 import com.pablojuice.lsiapp.databinding.ItemUserBinding
 
 class UserViewHolder(

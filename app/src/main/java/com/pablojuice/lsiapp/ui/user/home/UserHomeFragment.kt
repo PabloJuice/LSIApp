@@ -4,11 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.pablojuice.lsiapp.R
 import com.pablojuice.lsiapp.core.ui.BaseFragment
+import com.pablojuice.lsiapp.database.entity.UserItem
 import com.pablojuice.lsiapp.databinding.FragmentUserHomeBinding
+import com.pablojuice.lsiapp.ui.user.home.adapter.UserAdapter
 
-class UserHomeFragment : BaseFragment<FragmentUserHomeBinding, UserHomeViewModel>() {
+class UserHomeFragment :
+    BaseFragment<FragmentUserHomeBinding, UserHomeViewModel>(),
+    UserAdapter.Listener {
+    private val userAdapter: UserAdapter = UserAdapter(this)
 
     override fun bindLayout(
         inflater: LayoutInflater,
@@ -23,6 +32,35 @@ class UserHomeFragment : BaseFragment<FragmentUserHomeBinding, UserHomeViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecycler()
         viewModel.fetchUsers()
+        setupListeners()
+    }
+
+    private fun setupListeners() {
+        viewModel.users.observe(viewLifecycleOwner) {
+            userAdapter.addItems(it)
+        }
+    }
+
+    private fun setupRecycler() {
+        binding.userRecycler.layoutManager = LinearLayoutManager(context)
+        ResourcesCompat.getDrawable(
+            resources,
+            R.drawable.custom_divider_item,
+            null
+        )?.let { drawable ->
+            binding.userRecycler.addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                ).apply { setDrawable(drawable) }
+            )
+        }
+        binding.userRecycler.adapter = userAdapter
+    }
+
+    override fun onItemClick(item: UserItem) {
+        TODO("Not yet implemented")
     }
 }

@@ -3,6 +3,7 @@ package com.pablojuice.lsiapp.ui.user.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.pablojuice.lsiapp.database.entity.UserItem
 import com.pablojuice.lsiapp.databinding.ItemUserBinding
 
 class UserAdapter(private val listener: Listener) : RecyclerView.Adapter<UserViewHolder>() {
@@ -23,8 +24,12 @@ class UserAdapter(private val listener: Listener) : RecyclerView.Adapter<UserVie
         return items.size
     }
 
-    fun addItems(items: MutableList<UserItem>?) {
-        items?.also { this.items.addAll(it) }
+    fun addItems(items: List<UserItem>?) {
+        items?.also {
+            val oldSize = this.items.size
+            this.items.addAll(it)
+            notifyItemRangeChanged(oldSize, this.items.size)
+        }
     }
 
     interface Listener {
