@@ -14,8 +14,10 @@ class UserHomeViewModel : BaseViewModel() {
 
     fun fetchUsers() {
         CoroutineScope(Dispatchers.IO).launch {
-            users.postValue(UserRequestHandler.getGitHubUsers()?.toUserItemList())
-            users.postValue(UserRequestHandler.getDailyMotionUsers()?.users?.toUserItemList())
+            if (users.value == null) {
+                users.postValue(UserRequestHandler.getGitHubUsers()?.toUserItemList())
+                users.postValue(UserRequestHandler.getDailyMotionUsers()?.users?.toUserItemList())
+            }
         }
     }
 

@@ -25,9 +25,13 @@ class UserAdapter(private val listener: Listener) : RecyclerView.Adapter<UserVie
     }
 
     fun addItems(items: List<UserItem>?) {
-        items?.also {
+        items?.also { list ->
             val oldSize = this.items.size
-            this.items.addAll(it)
+            list.forEach {
+                if (!this.items.contains(it)) {
+                    this.items.add(it)
+                }
+            }
             notifyItemRangeChanged(oldSize, this.items.size)
         }
     }

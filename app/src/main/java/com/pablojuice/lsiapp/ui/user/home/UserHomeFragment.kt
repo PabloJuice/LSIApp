@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pablojuice.lsiapp.R
 import com.pablojuice.lsiapp.core.ui.BaseFragment
-import com.pablojuice.lsiapp.database.entity.UserItem
+import com.pablojuice.lsiapp.data.model.UserItem
 import com.pablojuice.lsiapp.databinding.FragmentUserHomeBinding
 import com.pablojuice.lsiapp.ui.user.home.adapter.UserAdapter
 
@@ -33,8 +33,8 @@ class UserHomeFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
-        viewModel.fetchUsers()
         setupListeners()
+        viewModel.fetchUsers()
     }
 
     private fun setupListeners() {
@@ -47,7 +47,7 @@ class UserHomeFragment :
         binding.userRecycler.layoutManager = LinearLayoutManager(context)
         ResourcesCompat.getDrawable(
             resources,
-            R.drawable.custom_divider_item,
+            R.drawable.ic_custom_divider,
             null
         )?.let { drawable ->
             binding.userRecycler.addItemDecoration(
@@ -61,6 +61,8 @@ class UserHomeFragment :
     }
 
     override fun onItemClick(item: UserItem) {
-        TODO("Not yet implemented")
+        navigate(
+            UserHomeFragmentDirections.actionUserHomeFragmentToUserDetailsFragment(item)
+        )
     }
 }
